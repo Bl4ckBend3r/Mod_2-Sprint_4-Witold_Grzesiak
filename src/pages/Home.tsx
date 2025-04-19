@@ -11,7 +11,7 @@ const Home = () => {
 
   const handleCardClick = (id: string) => {
     setSelectedId(id);
-    // Tu potem odpalimy modala 😈
+  
   };
 
   return (
@@ -19,7 +19,7 @@ const Home = () => {
       <h2>Lista postaci Disney</h2>
 
       {loading && <p>Ładowanie danych...</p>}
-      {error && <p>❌ {error}</p>}
+      {error && <p> {error}</p>}
 
       {!loading && !error && (
         <CharactersGrid characters={characters} onCardClick={handleCardClick} />
