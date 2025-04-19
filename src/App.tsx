@@ -3,6 +3,8 @@ import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import GlobalStyle from "./styles/GlobalStyle";
 import { lightTheme } from "./themes/light";
 import { darkTheme } from "./themes/dark";
+import ThemeSwitch from "./components/ThemeSwitch";
+import Home from "./pages/Home";
 
 const AppContent = () => {
   const { theme } = useTheme();
@@ -10,11 +12,13 @@ const AppContent = () => {
 
   return (
     <StyledThemeProvider theme={currentTheme}>
-      <GlobalStyle />
-      <Container>
-        <h1>Disney Characters</h1>
-      </Container>
-    </StyledThemeProvider>
+    <GlobalStyle />
+    <ThemeSwitch /> 
+    <Container>
+      <h1>Disney Characters</h1>
+      <Home />
+    </Container>
+  </StyledThemeProvider>
   );
 };
 
