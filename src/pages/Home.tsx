@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useCharacters } from "../hooks/useCharacters";
 import CharactersGrid from "../components/CharactersGrid";
+import CharacterModal from "../components/CharacterModal";
+import Pagination from "../components/Pagination";
 
 const Home = () => {
   const [page, setPage] = useState(1);
@@ -11,7 +13,6 @@ const Home = () => {
 
   const handleCardClick = (id: string) => {
     setSelectedId(id);
-  
   };
 
   return (
@@ -24,6 +25,14 @@ const Home = () => {
       {!loading && !error && (
         <CharactersGrid characters={characters} onCardClick={handleCardClick} />
       )}
+      {selectedId && (
+        <CharacterModal id={selectedId} onClose={() => setSelectedId(null)} />
+      )}
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        onPageChange={(newPage) => setPage(newPage)}
+      />
     </Wrapper>
   );
 };
